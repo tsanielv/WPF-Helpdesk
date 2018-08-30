@@ -1,0 +1,23 @@
+﻿<Window x:Class="HelpDesk.Views.Role"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelpDesk.Views"
+        mc:Ignorable="d"
+        Title="Role" Height="300" Width="650.865">
+    <Grid>
+        <Label x:Name="label_title" Content="DATA USER ROLE" HorizontalAlignment="Left" Margin="244,14,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label_id" Content="ROLE ID" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_role" Content="ROLE TYPE" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_id" HorizontalAlignment="Left" Height="27" Margin="100,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75"/>
+        <ComboBox x:Name="comboBox_role" HorizontalAlignment="Left" Margin="100,110,0,0" VerticalAlignment="Top" Width="139" Height="26"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="137" Margin="262,62,0,0" VerticalAlignment="Top" Width="361"/>
+        <Button x:Name="button_save" Content="Save" HorizontalAlignment="Left" Margin="261,221,0,0" VerticalAlignment="Top" Width="57"/>
+        <Button x:Name="button_add" Content="Add" HorizontalAlignment="Left" Margin="332,221,0,0" VerticalAlignment="Top" Width="57" />
+        <Button x:Name="button_edit" Content="Edit" HorizontalAlignment="Left" Margin="405,221,0,0" VerticalAlignment="Top" Width="56"/>
+        <Button x:Name="button_delete" Content="Delete" HorizontalAlignment="Left" Margin="478,221,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button_exit" Content="Exit" HorizontalAlignment="Left" Margin="567,221,0,0" VerticalAlignment="Top" Width="59" Click="button4_Click"/>
+
+    </Grid>
+</Window>
