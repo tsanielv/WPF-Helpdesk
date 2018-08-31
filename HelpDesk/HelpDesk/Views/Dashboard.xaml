@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpDesk.Views"
         mc:Ignorable="d"
-        Title="Helpdesk System" Height="359.722" Width="1059.926">
+        Title="Helpdesk System" Height="359.722" Width="1059.926" Loaded="Window_Loaded">
     <Grid>
 
         <TabControl>
@@ -42,8 +42,8 @@
 
                     <DataGrid Name="dgDepartment"  AutoGenerateColumns="False" Margin="362,-10,-365,-16">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="100" />
-                            <DataGridTextColumn Header="Department Name" Width="250" />
+                            <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Department Name" Width="250" Binding="{Binding Department_Name}"/>
                         </DataGrid.Columns>
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>

@@ -28,13 +28,11 @@ namespace HelpDesk.Views
 
         helpdeskEntitiesNew _context = new helpdeskEntitiesNew();
 
-        
-
-        private void dgRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void clearText()
         {
-
+            tB_id.Clear();
+            tB_depatment_name.Clear();
         }
-
 
         private void button_save_department(object sender, RoutedEventArgs e)
         {
@@ -48,6 +46,8 @@ namespace HelpDesk.Views
             {
                 _context.Departments.Add(depart);
                 var result = _context.SaveChanges();
+                clearText();
+                viewDepartment(dgDepartment);
             }
             catch (Exception ex)
             {
@@ -74,6 +74,23 @@ namespace HelpDesk.Views
                 Console.Write(ex.InnerException);
             }
             MessageBox.Show("Input Success!", "Role", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+       
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewDepartment(dgDepartment);
+        }
+
+        private void viewDepartment(DataGrid DG)
+        {
+            DG.ItemsSource = _context.Departments.ToList();
+        }
+
+        private void dgRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
