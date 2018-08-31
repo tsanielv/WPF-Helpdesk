@@ -172,6 +172,12 @@ namespace HelpDesk.Views {
             return;
             case 5:
             this.button_add = ((System.Windows.Controls.Button)(target));
+            
+            #line 14 "..\..\..\Views\Department.xaml"
+            this.button_add.Click += new System.Windows.RoutedEventHandler(this.button_add_Click);
+            
+            #line default
+            #line hidden
             return;
             case 6:
             this.dataGrid = ((System.Windows.Controls.DataGrid)(target));

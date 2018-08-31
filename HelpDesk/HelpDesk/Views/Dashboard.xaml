@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpDesk.Views"
         mc:Ignorable="d"
-        Title="Helpdesk System" Height="300" Width="1059.926">
+        Title="Helpdesk System" Height="359.722" Width="1059.926">
     <Grid>
 
         <TabControl>
@@ -28,11 +28,22 @@
 
             </TabItem>
             <TabItem Header=" Data Department ">
-                <Grid Margin="10">
-                    <DataGrid  AutoGenerateColumns="False">
+                <Grid Margin="10,8,10,12">
+                    <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
+                        <Label x:Name="label1" Content="INSERT DEPARTMENT" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                        <Label x:Name="label2" Content="Department ID" HorizontalAlignment="Left" Margin="12,85,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
+                        <Label x:Name="label3" Content="Depeartment Name" HorizontalAlignment="Left" Margin="12,135,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
+                        <TextBox x:Name="tB_id" HorizontalAlignment="Left" Height="30" Margin="164,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="tB_depatment_name" HorizontalAlignment="Left" Height="30" Margin="164,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201"/>
+                        <Button x:Name="button_edit" Content="Edit" HorizontalAlignment="Left" Margin="226,187,0,0" VerticalAlignment="Top" Width="58" Height="27"/>
+                        <Button x:Name="button_delete" Content="Delete" HorizontalAlignment="Left" Margin="290,187,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
+                        <Button x:Name="button_add" Content="Save" HorizontalAlignment="Left" Margin="164,187,0,0" VerticalAlignment="Top" Width="57" Height="27" Click="button_save_department"/>
+                    </Grid>
+
+                    <DataGrid Name="dgDepartment"  AutoGenerateColumns="False" Margin="362,-10,-365,-16">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Department Name" Binding="{Binding Birthday}" />
+                            <DataGridTextColumn Header="ID" Width="100" />
+                            <DataGridTextColumn Header="Department Name" Width="250" />
                         </DataGrid.Columns>
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
@@ -42,26 +53,47 @@
                     </DataGrid>
 
 
-                </Grid>
-            </TabItem>
-            <TabItem Header=" Data Category ">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="27*" />
-                        <ColumnDefinition Width="493*"/>
-                        <ColumnDefinition Width="5" />
-                        <ColumnDefinition Width="521*" />
-                    </Grid.ColumnDefinitions>
-
-                    <GridSplitter Grid.Column="2" Width="5" HorizontalAlignment="Stretch" />
 
                 </Grid>
             </TabItem>
-            <TabItem Header=" Data Role " />
+            <TabItem Header=" Data Role ">
+                <Grid Margin="10,8,10,12">
+                    <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="46*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label_titlerole" Content="INSERT ROLE" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="2"/>
+                        <Label x:Name="label" Content="Role ID" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <Label x:Name="label4" Content="Role Name" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <TextBox x:Name="tB_roleid" HorizontalAlignment="Left" Height="32" Margin="107,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tB_Namerole" HorizontalAlignment="Left" Height="34" Margin="107,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_save" Content="Save" HorizontalAlignment="Left" Margin="107,187,0,0" VerticalAlignment="Top" Width="69" Height="31" Click="button_save_role" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_edit" Content="Edit" HorizontalAlignment="Left" Margin="35,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                        <Button x:Name="btn_delete" Content="Delete" HorizontalAlignment="Left" Margin="127,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                    </Grid>
+
+                    <DataGrid Name="dgRole"  AutoGenerateColumns="False" Margin="362,-10,-365,-16" SelectionChanged="dgRole_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="100" />
+                            <DataGridTextColumn Header="Role Name" Width="250" />
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Details}" Margin="10" />
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header=" Data Category " />
             <TabItem Header=" Data Type " />
             <TabItem Header=" Data Holiday " />
             <TabItem Header=" Data Ticket " />
-            <Label x:Name="label" Content="Label" Height="100" Width="100"/>
+
         </TabControl>
 
     </Grid>
