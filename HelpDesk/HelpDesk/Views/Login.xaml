@@ -1,0 +1,35 @@
+﻿<Window x:Class="HelpDesk.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelpDesk.Views"
+        mc:Ignorable="d"
+        Title="Login" Height="500" Width="500">
+    <Border Background="Black">
+        <Grid>
+            <StackPanel 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                TextBlock.TextAlignment="Center">
+                <Border Background="White"
+            		CornerRadius="10"
+            		Padding="15 50 15 50"
+            		Width="400">
+
+                    <StackPanel>
+                        <TextBlock Text="LOGIN FORM" FontSize="24" FontWeight="Bold" Foreground="Black" Margin="0 0 0 15"/>
+                        <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120" />
+                        <TextBox x:Name="txtPassword" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
+                        <Button x:Name="Login1" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="Login1_Click"/>
+                    </StackPanel>
+                    
+
+                </Border>
+            </StackPanel>
+            
+
+        </Grid>
+    </Border>
+    
+</Window>
