@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpDesk.Views"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="500">
-    <Border Background="Black">
+        Title="Login" Height="622.722" Width="1059.926">
+    <Border Background="#5F9EA0">
         <Grid>
             <StackPanel 
                 VerticalAlignment="Center" 
@@ -18,8 +18,8 @@
             		Width="400">
 
                     <StackPanel>
-                        <TextBlock Text="LOGIN FORM" FontSize="24" FontWeight="Bold" Foreground="Black" Margin="0 0 0 15"/>
-                        <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120" />
+                        <TextBlock Text="LOGIN FORM" FontSize="24" FontWeight="Bold" Foreground="#5F9EA0" Margin="0 0 0 15"/>
+                        <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120" TextChanged="txtUsername_TextChanged" />
                         <TextBox x:Name="txtPassword" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
                         <Button x:Name="Login1" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="Login1_Click"/>
                     </StackPanel>

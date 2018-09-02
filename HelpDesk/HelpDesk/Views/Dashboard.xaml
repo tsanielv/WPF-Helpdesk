@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelpDesk.Views"
         mc:Ignorable="d"
-        Title="Helpdesk System" Height="622.722" Width="1059.926" Loaded="Window_Loaded">
+        Title="Helpdesk System" Height="622.722" Width="1059.926">
     <Grid>
 
         <TabControl>
-            <TabItem Header=" Data User ">
+
+            <TabItem Header=" Data User " Loaded="Window_Loaded_User">
                 <Grid Margin="10">
                     <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
                         <Grid.ColumnDefinitions>
@@ -38,13 +39,13 @@
                         <TextBox x:Name="tB_phone" HorizontalAlignment="Left" Height="27" Margin="123,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="2"/>
                         <TextBox x:Name="tB_email" HorizontalAlignment="Left" Height="27" Margin="123,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256"  Grid.ColumnSpan="2"/>
                         <TextBox x:Name="tB_departmentid" HorizontalAlignment="Left" Height="27" Margin="123,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="tb_roleid" HorizontalAlignment="Left" Height="27" Margin="123,442,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="2"/>
-                        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="123,489,0,0" VerticalAlignment="Top" Width="62" Grid.ColumnSpan="2" Height="31" FontSize="14.667" Click="button_save_user"/>
-                        <Button x:Name="btnEdit" Content="Edit" Grid.Column="1" HorizontalAlignment="Left" Margin="48,489,0,0" VerticalAlignment="Top" Width="75" Height="31" FontSize="14.667"/>
-                        <Button x:Name="btnDelete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="139,489,0,0" VerticalAlignment="Top" Width="77" Height="33" FontSize="14.667"/>
+                        <TextBox x:Name="tB_roleid" HorizontalAlignment="Left" Height="27" Margin="123,442,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_usave" Content="Save" HorizontalAlignment="Left" Margin="123,489,0,0" VerticalAlignment="Top" Width="62" Grid.ColumnSpan="2" Height="31" FontSize="14.667" Click="button_save_user"/>
+                        <Button x:Name="btn_uedit" Content="Edit" Grid.Column="1" HorizontalAlignment="Left" Margin="48,489,0,0" VerticalAlignment="Top" Width="75" Height="31" FontSize="14.667"/>
+                        <Button x:Name="btn_edelete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="139,489,0,0" VerticalAlignment="Top" Width="77" Height="33" FontSize="14.667"/>
 
                     </Grid>
-                    <DataGrid Name="dgUser" AutoGenerateColumns="False" Margin="383,-10,-10,-13">
+                    <DataGrid Name="dgUser" AutoGenerateColumns="False" Margin="383,-10,-10,-13" SelectionChanged="dgUser_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header=" ID " Binding="{Binding Id}" Width="50"/>
                             <DataGridTextColumn Header=" First Name " Binding="{Binding First_Name}" Width="150" />
@@ -54,43 +55,42 @@
                             <DataGridTextColumn Header=" Department " Binding="{Binding Departmentid}" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
-
-
                 </Grid>
-
-
-
             </TabItem>
-            <TabItem Header=" Data Department ">
+
+
+
+            <TabItem Header=" Data Department " Loaded="Window_Loaded_Dept">
                 <Grid Margin="10,8,10,12">
                     <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
                         <Label x:Name="label1" Content="INSERT DEPARTMENT" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White"/>
                         <Label x:Name="label2" Content="Department ID" HorizontalAlignment="Left" Margin="12,85,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
                         <Label x:Name="label3" Content="Depeartment Name" HorizontalAlignment="Left" Margin="12,135,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
-                        <TextBox x:Name="tB_id" HorizontalAlignment="Left" Height="30" Margin="164,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                        <TextBox x:Name="tB_depatment_name" HorizontalAlignment="Left" Height="30" Margin="164,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201"/>
-                        <Button x:Name="button_edit" Content="Edit" HorizontalAlignment="Left" Margin="226,187,0,0" VerticalAlignment="Top" Width="58" Height="27"/>
-                        <Button x:Name="button_delete" Content="Delete" HorizontalAlignment="Left" Margin="290,187,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
-                        <Button x:Name="button_add" Content="Save" HorizontalAlignment="Left" Margin="164,187,0,0" VerticalAlignment="Top" Width="57" Height="27" Click="button_save_department"/>
+                        <TextBox x:Name="tB_department_id" HorizontalAlignment="Left" Height="30" Margin="164,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="tB_department_name" HorizontalAlignment="Left" Height="30" Margin="164,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="201"/>
+                        <Button x:Name="button_dedit" Content="Edit" HorizontalAlignment="Left" Margin="226,187,0,0" VerticalAlignment="Top" Width="58" Height="27"/>
+                        <Button x:Name="button_ddelete" Content="Delete" HorizontalAlignment="Left" Margin="290,187,0,0" VerticalAlignment="Top" Width="75" Height="27"/>
+                        <Button x:Name="button_dsave" Content="Save" HorizontalAlignment="Left" Margin="164,187,0,0" VerticalAlignment="Top" Width="57" Height="27" Click="button_save_department"/>
                     </Grid>
 
-                    <DataGrid Name="dgDepartment"  AutoGenerateColumns="False" Margin="363,-10,-366,-16">
+                    <DataGrid Name="dgDepartment"  AutoGenerateColumns="False" Margin="362,-10,-365,-16" SelectionChanged="dgDepartment_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Department Name" Width="250" Binding="{Binding Department_Name}"/>
                         </DataGrid.Columns>
+                        <DataGridTextColumn></DataGridTextColumn>
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Details}" Margin="10" />
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
                     </DataGrid>
-
-
-
                 </Grid>
             </TabItem>
-            <TabItem Header=" Data Role ">
+
+
+
+            <TabItem Header=" Data Role " Loaded="Window_Loaded_Role">
                 <Grid Margin="10,8,10,12">
                     <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
                         <Grid.ColumnDefinitions>
@@ -100,33 +100,138 @@
                         <Label x:Name="label_titlerole" Content="INSERT ROLE" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="2"/>
                         <Label x:Name="label" Content="Role ID" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
                         <Label x:Name="label4" Content="Role Name" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
-                        <TextBox x:Name="tB_roleid" HorizontalAlignment="Left" Height="32" Margin="107,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tB_roleid1" HorizontalAlignment="Left" Height="32" Margin="107,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
                         <TextBox x:Name="tB_Namerole" HorizontalAlignment="Left" Height="34" Margin="107,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2"/>
-                        <Button x:Name="btn_save" Content="Save" HorizontalAlignment="Left" Margin="107,187,0,0" VerticalAlignment="Top" Width="69" Height="31" Click="button_save_role" Grid.ColumnSpan="2"/>
-                        <Button x:Name="btn_edit" Content="Edit" HorizontalAlignment="Left" Margin="35,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
-                        <Button x:Name="btn_delete" Content="Delete" HorizontalAlignment="Left" Margin="127,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                        <Button x:Name="btn_rsave" Content="Save" HorizontalAlignment="Left" Margin="107,187,0,0" VerticalAlignment="Top" Width="69" Height="31" Click="button_save_role" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_redit" Content="Edit" HorizontalAlignment="Left" Margin="35,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                        <Button x:Name="btn_rdelete" Content="Delete" HorizontalAlignment="Left" Margin="127,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
                     </Grid>
 
                     <DataGrid Name="dgRole"  AutoGenerateColumns="False" Margin="362,-10,-365,-16" SelectionChanged="dgRole_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Role Name" Width="250" Binding="{Binding Role1}"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="100" />
+                            <DataGridTextColumn Header="Role Name" Binding="{Binding Role1}" Width="250" />
                         </DataGrid.Columns>
+
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Details}" Margin="10" />
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
                     </DataGrid>
-
-
-
                 </Grid>
             </TabItem>
-            <TabItem Header=" Data Category " />
-            <TabItem Header=" Data Type " />
-            <TabItem Header=" Data Holiday " />
-            <TabItem Header=" Data Ticket " />
+
+
+
+            <TabItem Header=" Data Category " Loaded="Window_Loaded_Category">
+                <Grid Margin="10,8,10,12">
+                    <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="46*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label_titlecategory" Content="INSERT CATEGORY" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="2"/>
+                        <Label x:Name="label_idcategory" Content="Category ID" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <Label x:Name="label_cname" Content="Category Name" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <TextBox x:Name="tB_categoryid" HorizontalAlignment="Left" Height="32" Margin="107,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tB_categoryname" HorizontalAlignment="Left" Height="34" Margin="107,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_csave" Content="Save" HorizontalAlignment="Left" Margin="107,187,0,0" VerticalAlignment="Top" Width="69" Height="31" Click="button_save_category" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_cedit" Content="Edit" HorizontalAlignment="Left" Margin="35,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                        <Button x:Name="btn_cdelete" Content="Delete" HorizontalAlignment="Left" Margin="127,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                    </Grid>
+
+                    <DataGrid Name="dgCategory"  AutoGenerateColumns="False" Margin="362,-10,-365,-16" SelectionChanged="dgCategory_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="100" />
+                            <DataGridTextColumn Header="Category Name" Binding="{Binding Category_Name}" Width="250" />
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Details}" Margin="10" />
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Header=" Data Type " Loaded="Window_Loaded_Type">
+                <Grid Margin="10,8,10,12">
+                    <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="46*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label_titletype" Content="INSERT TYPE" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="2"/>
+                        <Label x:Name="label_type" Content="Type" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <Label x:Name="label_tinterval" Content="Interval" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <TextBox x:Name="tB_type" HorizontalAlignment="Left" Height="32" Margin="107,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tB_interval" HorizontalAlignment="Left" Height="34" Margin="107,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_tsave" Content="Save" HorizontalAlignment="Left" Margin="107,187,0,0" VerticalAlignment="Top" Width="69" Height="31" Click="button_save_type" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_tedit" Content="Edit" HorizontalAlignment="Left" Margin="35,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                        <Button x:Name="btn_tdelete" Content="Delete" HorizontalAlignment="Left" Margin="127,188,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                    </Grid>
+
+                    <DataGrid Name="dgType"  AutoGenerateColumns="False" Margin="362,-10,-365,-16">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100" />
+                            <DataGridTextColumn Header="Interval" Binding="{Binding Interval}" Width="250" />
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Details}" Margin="10" />
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Header=" Data Sub Category " Loaded="Window_Loaded_SubCategory">
+                <Grid Margin="10,8,10,12">
+                    <Grid Background="#5F9EA0" HorizontalAlignment="Left" Height="929" Margin="-11,-10,0,-638" VerticalAlignment="Top" Width="935">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="46*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label_titlesub" Content="INSERT SUB CATEGORY" HorizontalAlignment="Left" Margin="107,23,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="2"/>
+                        <Label x:Name="label_idsubcategory" Content="Sub Category ID" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <Label x:Name="label_sname" Content="Sub Category Name" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <Label x:Name="label_scategoryid" Content="Category ID" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14.667"/>
+                        <TextBox x:Name="tB_idscategory" HorizontalAlignment="Left" Height="32" Margin="107,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tB_scategoryname" HorizontalAlignment="Left" Height="34" Margin="107,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tB_scategoryid" HorizontalAlignment="Left" Height="34" Margin="107,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_ssave" Content="Save" HorizontalAlignment="Left" Margin="107,233,0,0" VerticalAlignment="Top" Width="69" Height="31" Click="button_save_subcategory" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_sedit" Content="Edit" HorizontalAlignment="Left" Margin="35,234,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                        <Button x:Name="btn_sdelete" Content="Delete" HorizontalAlignment="Left" Margin="127,234,0,0" VerticalAlignment="Top" Width="75" Height="31" Grid.Column="1"/>
+                    </Grid>
+
+                    <DataGrid Name="dgSubCategory"  AutoGenerateColumns="False" Margin="362,-10,-365,-16" SelectionChanged="dgSubCategory_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="100" />
+                            <DataGridTextColumn Header="Sub Category Name" Binding="{Binding SubCategory_Name}" Width="250" />
+                            <DataGridTextColumn Header="Category ID" Binding="{Binding CategoryId}" Width="100" />
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Details}" Margin="10" />
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Header=" Data Ticket ">
+
+            </TabItem>
 
         </TabControl>
 

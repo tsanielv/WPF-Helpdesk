@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\
 HelpDesk
 none
 false
 DEBUG;TRACE
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\App.xaml
-2526798695
-2-612872776
-22481834012
-18-1897036901
-MainWindow.xaml;Views\Dashboard.xaml;
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\App.xaml
+32128089664
+2-1556844510
+26-1608515355
+18-429311052
+MainWindow.xaml;Views\Dashboard.xaml;Views\Login.xaml;
 
 True
 

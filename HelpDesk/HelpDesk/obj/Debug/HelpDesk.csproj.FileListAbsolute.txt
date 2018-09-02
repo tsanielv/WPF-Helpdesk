@@ -1,21 +1,45 @@
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe.config
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\HelpDesk.pdb
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\EntityFramework.dll
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\EntityFramework.SqlServer.dll
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\EntityFramework.xml
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\EntityFramework.SqlServer.xml
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.csprojResolveAssemblyReference.cache
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\MainWindow.g.cs
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Dashboard.g.cs
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Department.g.cs
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\User.g.cs
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\App.g.cs
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk_Content.g.cs
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk_MarkupCompile.cache
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk_MarkupCompile.lref
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\bin\Debug\HelpDesk.pdb
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\MainWindow.baml
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Dashboard.baml
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Department.baml
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\User.baml
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.g.resources
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.Properties.Resources.resources
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.GenerateResource.Cache
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.exe
 D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.pdb
-D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\HelpDesk.csprojResolveAssemblyReference.cache
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Role.g.cs
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Role.baml
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Dashboard.g.cs
+D:\PT Metrodata\Dotnet\HelpDesk\HelpDesk\obj\Debug\Views\Dashboard.baml
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\MainWindow.g.cs
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\Views\Dashboard.g.cs
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\Views\Login.g.cs
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\App.g.cs
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk_Content.g.cs
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk_MarkupCompile.cache
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk_MarkupCompile.lref
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe.config
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\HelpDesk.pdb
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\EntityFramework.dll
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\EntityFramework.xml
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\MainWindow.baml
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\Views\Dashboard.baml
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\Views\Login.baml
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk.g.resources
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk.Properties.Resources.resources
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.GenerateResource.Cache
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk.exe
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk.pdb
+C:\Users\T\Documents\Visual Studio 2015\Projects\WPF-Helpdesk-master\HelpDesk\HelpDesk\obj\Debug\HelpDesk.csprojResolveAssemblyReference.cache

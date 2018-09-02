@@ -11,20 +11,20 @@ namespace HelpDesk.Controller
     {
         helpdeskEntities1 db = new helpdeskEntities1();
 
-        public bool cekLogin(string username, string password)
+        public int cekLogin(string username, string password)
         {
-            bool cek = false;
-            var temp = db.Users.FirstOrDefault();
+            int cek = 0;
+            var temp = db.Users.FirstOrDefault(db => db.Username == username && db.Password == password);
             try
             {
                 if (temp.Username == username && temp.Password == password)
                 {
-                    cek = true;
+                    cek = temp.RoleId;
                 }
             }
             catch (Exception ex)
             {
-                cek = false;
+                cek = 0;
                 ex.GetBaseException();
             }
             return cek;

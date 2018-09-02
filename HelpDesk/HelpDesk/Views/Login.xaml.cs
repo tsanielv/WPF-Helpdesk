@@ -24,6 +24,7 @@ namespace HelpDesk.Views
     {
 
         LoginController l = new LoginController();
+        Dashboard vd = new Dashboard();
         public Login()
         {
             InitializeComponent();
@@ -31,12 +32,26 @@ namespace HelpDesk.Views
 
         private void Login1_Click(object sender, RoutedEventArgs e)
         {
-            if (l.cekLogin(txtUsername.Text, txtPassword.Text) == true)
+            if ((l.cekLogin(txtUsername.Text, txtPassword.Text)) != 0)
             {
                 MessageBox.Show("Login Success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Hide();
-                Dashboard vd = new Dashboard();
-                vd.ShowDialog();
+                if (l.cekLogin(txtUsername.Text, txtPassword.Text) == 1)
+                {
+                    
+                    vd.ShowDialog();
+                }
+                else if (l.cekLogin(txtUsername.Text, txtPassword.Text) == 2)
+                {
+                    
+                    vd.ShowDialog();
+                }
+                else
+                {
+                    
+                    vd.ShowDialog();
+                }
+                
             }
             else
             {
@@ -45,6 +60,11 @@ namespace HelpDesk.Views
                 txtPassword.Clear();
                 txtUsername.Focus();
             }
+        }
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
