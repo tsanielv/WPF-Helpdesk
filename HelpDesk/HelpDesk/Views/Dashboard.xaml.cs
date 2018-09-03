@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HelpDesk.Views;
 using HelpDesk.Model;
+using System.Text.RegularExpressions;
 
 namespace HelpDesk.Views
 {
@@ -77,6 +78,11 @@ namespace HelpDesk.Views
         {
             tB_categoryid.Clear();
             tB_categoryname.Clear();
+        }
+
+        private void clearTextInputTicket()
+        {
+            tB_tid.Clear();
         }
 
         private void button_save_user(object sender, RoutedEventArgs e)
@@ -159,7 +165,7 @@ namespace HelpDesk.Views
         {
             Category cat = new Category()
             {
-                Id = Convert.ToInt32(tB_categoryid.Text),
+                //Id = Convert.ToInt32(tB_categoryid.Text),
                 Category_Name = tB_categoryname.Text
             };
 
@@ -222,6 +228,43 @@ namespace HelpDesk.Views
             MessageBox.Show("Input Success!", "Category", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        private void button_save_ticket(object sender, RoutedEventArgs e)
+        {
+            Ticket ticket = new Ticket()
+            {
+                Id = Convert.ToInt32(tB_tid.Text),
+                Type = tB_ttype.Text,
+                Description = tB_tdescription.Text,
+                Dtm_Crt = Convert.ToDateTime(tB_tdtm.Text),
+                L1 = tB_tl1.Text,
+                DueDate = Convert.ToDateTime(tB_tdue.Text),
+                Last_Update = Convert.ToDateTime(tB_tlast.Text),
+                OnProgressDate = Convert.ToDateTime(tB_tonprog.Text),
+                OnWaitingDate = Convert.ToDateTime(tB_tonwait.Text),
+                OnHoldDate = Convert.ToDateTime(tB_tonhold.Text),
+                ResolvedTime = Convert.ToDateTime(tB_tresolved.Text),
+                ClosedTime = Convert.ToDateTime(tB_tclosed.Text),
+                Technician = tB_ttechnician.Text,
+                Status = tB_tstatus.Text,
+                UsersId = Convert.ToInt32(tB_tuserid.Text),
+                CategoryId = Convert.ToInt32(tB_tcategoryid.Text),
+                SubCategoryId = Convert.ToInt32(tB_tsubcategoryid.Text)
+            };
+
+            try
+            {
+                _context.Tickets.Add(ticket);
+                var result = _context.SaveChanges();
+                clearText();
+                viewTicket(dgTicket);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.InnerException);
+            }
+            MessageBox.Show("Input Success!", "Ticket", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
         private void Window_Loaded_User(object sender, RoutedEventArgs e)
         {
             viewUser(dgUser);
@@ -251,15 +294,26 @@ namespace HelpDesk.Views
             viewSubCategory(dgSubCategory);
         }
 
+        private void Window_Loaded_Ticket(object sender, RoutedEventArgs e)
+        {
+            viewTicket(dgTicket);
+        }
+
+
         private void viewUser(DataGrid DG)
         {
             DG.ItemsSource = _context.Users.ToList();
         }
 
-        //private void viewDepartment(DataGrid DG)
-        //{
-        //    DG.ItemsSource = _context.Departments.ToList();
-        //}
+        private void viewDepartment(DataGrid DG)
+        {
+            DG.ItemsSource = _context.Departments.ToList();
+        }
+
+        private void viewTicket(DataGrid DG)
+        {
+            DG.ItemsSource = _context.Tickets.ToList();
+        }
 
 
         private void viewRole(DataGrid DG)
@@ -305,6 +359,18 @@ namespace HelpDesk.Views
         private void dgSubCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void LetterValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
