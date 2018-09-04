@@ -4,14 +4,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Category_Name" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Department_Name" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="DueDate">
@@ -33,14 +33,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Role" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="SubCategory">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubCategory_Name" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
@@ -80,7 +80,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="First_Name" Type="varchar" MaxLength="30" Nullable="false" />

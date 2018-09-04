@@ -101,7 +101,7 @@
     <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Departmentid" Type="Int32" Nullable="false" />
-    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Roleid" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Department" Relationship="Self.FK_Users_Department1" FromRole="Users" ToRole="Department" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Users_Department" FromRole="Users" ToRole="Role" />
     <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Users" FromRole="Users" ToRole="Ticket" />
@@ -164,7 +164,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Users">
-        <PropertyRef Name="RoleId" />
+        <PropertyRef Name="Roleid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

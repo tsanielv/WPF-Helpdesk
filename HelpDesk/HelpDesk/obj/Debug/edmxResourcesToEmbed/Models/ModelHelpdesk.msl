@@ -98,7 +98,7 @@
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Roleid" ColumnName="RoleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

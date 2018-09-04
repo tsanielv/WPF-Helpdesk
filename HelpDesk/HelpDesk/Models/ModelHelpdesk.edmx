@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="helpdeskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="helpdeskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category_Name" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Department_Name" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="DueDate">
@@ -38,14 +38,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="SubCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubCategory_Name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
         </EntityType>
@@ -85,7 +85,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="First_Name" Type="varchar" MaxLength="30" Nullable="false" />
@@ -224,8 +224,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="helpdeskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -330,7 +329,7 @@
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Departmentid" Type="Int32" Nullable="false" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Roleid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Users_Department1" FromRole="Users" ToRole="Department" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Department" FromRole="Users" ToRole="Role" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Users" FromRole="Users" ToRole="Ticket" />
@@ -393,7 +392,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="RoleId" />
+              <PropertyRef Name="Roleid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -565,7 +564,7 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Roleid" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
