@@ -36,7 +36,7 @@
                         <TextBox x:Name="tb_u_password" HorizontalAlignment="Left" Height="27" Margin="123,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="tb_u_address" HorizontalAlignment="Left" Height="56" Margin="123,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="tb_u_city" HorizontalAlignment="Left" Height="27" Margin="123,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="tb_u_phone" HorizontalAlignment="Left" Height="27" Margin="123,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="tb_u_phone" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="27" Margin="123,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="tb_u_email" HorizontalAlignment="Left" Height="27" Margin="123,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256"  Grid.ColumnSpan="3"/>
                         <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="123,489,0,0" VerticalAlignment="Top" Width="62" Grid.ColumnSpan="2" Height="31" FontSize="14.667" Click="button_save_user"/>
                         <Button x:Name="btnEdit" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="48,489,0,0" VerticalAlignment="Top" Width="75" Height="31" FontSize="14.667" Click="btnEdit_Click"/>
@@ -211,7 +211,7 @@
                             <ComboBoxItem Name="Medium" Content="Medium"></ComboBoxItem>
                             <ComboBoxItem Name="High" Content="High"></ComboBoxItem>
                         </ComboBox>
-                        <TextBox x:Name="tb_t_interval" HorizontalAlignment="Left" Height="27" Margin="106,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tb_t_interval" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="27" Margin="106,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="2"/>
                         <Button x:Name="btn_t_save" Content="Add" HorizontalAlignment="Left" Margin="106,173,0,0" VerticalAlignment="Top" Width="63" Grid.ColumnSpan="2" Height="27" Click="btn_t_save_Click"/>
                         <Button x:Name="btn_t_edit" Content="Update" HorizontalAlignment="Left" Margin="32,173,0,0" VerticalAlignment="Top" Width="63" Height="27" Grid.Column="1" Click="btn_t_edit_Click"/>
                         <Button x:Name="btn_t_delete" Content="Delete" HorizontalAlignment="Left" Margin="113,173,0,0" VerticalAlignment="Top" Width="63" Height="27" Grid.Column="1" Click="btn_t_delete_Click"/>
@@ -242,7 +242,7 @@
                         </Grid.ColumnDefinitions>
                         <Label x:Name="label_titleticket" Content="INSERT TICKET" HorizontalAlignment="Left" Margin="134,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="2"/>
                         <Label x:Name="label_ttype" Content="Type" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
-                        <Label x:Name="label_tdescription" Content="Description" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
+                        <Label x:Name="label_tdescription" Content="Problems" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
                         <Label x:Name="label_tdtm" Content="Date Create" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
                         <Label x:Name="label_tl1" Content="Admin" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
                         <Label x:Name="label_tdue" Content="Due Date" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
@@ -257,48 +257,67 @@
                         <Label x:Name="label_tuserid" Content="User" HorizontalAlignment="Left" Margin="10,495,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
                         <Label x:Name="label_tcategoryid" Content="Category" HorizontalAlignment="Left" Margin="10,530,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
                         <Label x:Name="label_tsubcategoryid" Content="Sub Category" HorizontalAlignment="Left" Margin="10,565,0,0" VerticalAlignment="Top" FontSize="14.667" Foreground="White"/>
-                        <TextBox x:Name="tb_tk_type" HorizontalAlignment="Left" Height="27" Margin="3,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>
+                        <!--<TextBox x:Name="tb_tk_type" HorizontalAlignment="Left" Height="27" Margin="3,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>-->
                         <TextBox x:Name="tb_tk_description" HorizontalAlignment="Left" Height="27" Margin="3,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>
-                        <TextBox x:Name="tb_tk_status" HorizontalAlignment="Left" Height="27" Margin="3,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>
-
-                        <Button x:Name="btn_tk_save" Content="Save" HorizontalAlignment="Left" Margin="2,597,0,0" VerticalAlignment="Top" Width="52" Height="31" FontSize="14.667"  Grid.Column="1" Click="btn_tk_save_Click" />
-                        <DatePicker x:Name="dp_datecreate" Grid.Column="1" HorizontalAlignment="Left" Margin="3,110,0,0" VerticalAlignment="Top" Height="27" Width="202"/>
-                        <DatePicker x:Name="dp_duedate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <DatePicker x:Name="dp_lastupdate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,215,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <DatePicker x:Name="dp_onprogress" Grid.Column="1" HorizontalAlignment="Left" Margin="0,250,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <DatePicker x:Name="dp_onwait" Grid.Column="1" HorizontalAlignment="Left" Margin="0,285,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <DatePicker x:Name="dp_onhold" Grid.Column="1" HorizontalAlignment="Left" Margin="0,320,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <DatePicker x:Name="dp_resolved" Grid.Column="1" HorizontalAlignment="Left" Margin="0,355,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <DatePicker x:Name="dp_closed" Grid.Column="1" HorizontalAlignment="Left" Margin="0,390,0,0" VerticalAlignment="Top" Height="27" Width="205"/>
-                        <ComboBox x:Name="cb_tk_technician" Grid.Column="1" HorizontalAlignment="Left" Margin="3,425,0,0" VerticalAlignment="Top" Width="202" Height="27"/>
+                        <DatePicker x:Name="dp_datecreate" Grid.Column="1" HorizontalAlignment="Left" Margin="3,110,0,0" VerticalAlignment="Top" Height="27" Width="202" IsEnabled="False"/>
+                        <!--<TextBox x:Name="tb_tk_l1" HorizontalAlignment="Left" Height="27" Margin="3,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>-->
+                        <DatePicker x:Name="dp_duedate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <DatePicker x:Name="dp_lastupdate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,215,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <DatePicker x:Name="dp_onprogress" Grid.Column="1" HorizontalAlignment="Left" Margin="0,250,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <DatePicker x:Name="dp_onwait" Grid.Column="1" HorizontalAlignment="Left" Margin="0,285,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <DatePicker x:Name="dp_onhold" Grid.Column="1" HorizontalAlignment="Left" Margin="0,320,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <DatePicker x:Name="dp_resolved" Grid.Column="1" HorizontalAlignment="Left" Margin="0,355,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <DatePicker x:Name="dp_closed" Grid.Column="1" HorizontalAlignment="Left" Margin="0,390,0,0" VerticalAlignment="Top" Height="27" Width="205" IsEnabled="False"/>
+                        <!--<TextBox x:Name="tb_tk_teknisi" HorizontalAlignment="Left" Height="27" Margin="3,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>-->
+                        <!--<TextBox x:Name="tb_tk_status" HorizontalAlignment="Left" Height="27" Margin="3,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1"/>-->
                         <ComboBox x:Name="cb_tk_user" Grid.Column="1" HorizontalAlignment="Left" Margin="3,495,0,0" VerticalAlignment="Top" Width="202" Height="27"/>
                         <ComboBox x:Name="cb_tk_category" Grid.Column="1" HorizontalAlignment="Left" Margin="3,530,0,0" VerticalAlignment="Top" Width="202" Height="27"/>
                         <ComboBox x:Name="cb_tk_subcategory" Grid.Column="1" HorizontalAlignment="Left" Margin="3,565,0,0" VerticalAlignment="Top" Width="202" Height="27"/>
+                        <Button x:Name="btn_tk_save" Content="Save" HorizontalAlignment="Left" Margin="2,597,0,0" VerticalAlignment="Top" Width="52" Height="31" FontSize="14.667"  Grid.Column="1" Click="btn_tk_save_Click" />
+
+
+
+
                         <Button x:Name="btn_tk_edit" Content="Update" HorizontalAlignment="Left" Margin="67,597,0,0" VerticalAlignment="Top" Width="62" Height="31" FontSize="14.667"  Grid.Column="1" Click="btn_tk_edit_Click"/>
                         <Button x:Name="btn_tk_delete" Content="Delete" HorizontalAlignment="Left" Margin="142,597,0,0" VerticalAlignment="Top" Width="63" Height="31" FontSize="14.667"  Grid.Column="1" Click="btn_tk_delete_Click"/>
-                        <ComboBox x:Name="cb_tk_admin" Grid.Column="1" HorizontalAlignment="Left" Margin="3,145,0,0" VerticalAlignment="Top" Width="199" Height="27"/>
+                        <ComboBox x:Name="cb_tk_status" Grid.Column="1" HorizontalAlignment="Left" Margin="3,460,0,0" VerticalAlignment="Top" Width="202" Height="27">
+                            <ComboBoxItem Name="Laporan_Diterima" Content="Laporan Diterima"></ComboBoxItem>
+                            <ComboBoxItem Name="OnProgress" Content="OnProgress"></ComboBoxItem>
+                            <ComboBoxItem Name="OnWaitting" Content="OnWaitting"></ComboBoxItem>
+                            <ComboBoxItem Name="OnHolding" Content="OnHolding"></ComboBoxItem>
+                            <ComboBoxItem Name="Resolved" Content="Resolved"></ComboBoxItem>
+                            <ComboBoxItem Name="Closed" Content="Closed"></ComboBoxItem>
+                        </ComboBox>
+                        <ComboBox x:Name="cb_tk_type" Grid.Column="1" HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top" Width="202" Height="27">
+
+                        </ComboBox>
+                        <ComboBox x:Name="cb_tk_l1" Grid.Column="1" HorizontalAlignment="Left" Margin="3,145,0,0" VerticalAlignment="Top" Width="202" Height="27"/>
+                        <ComboBox x:Name="cb_tk_teknisi" Grid.Column="1" HorizontalAlignment="Left" Margin="3,425,0,0" VerticalAlignment="Top" Width="202" Height="27"/>
+
+
 
 
                     </Grid>
 
-                    <DataGrid Name="dgTiket"  AutoGenerateColumns="False" Margin="362,-10,-365,-16">
+                    <DataGrid Name="dgTiket"  AutoGenerateColumns="False" Margin="362,-10,-365,-16" SelectionChanged="dgTiket_SelectionChanged">
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="100" />
                             <DataGridTextColumn Header="Type Name" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Description" Binding="{Binding Interval}" Width="250" />
-                            <DataGridTextColumn Header="Date Create" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Admin" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Due Date" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Last Update" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Date On Progress" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Date On Wait" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Date On Hold" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Resolved Time" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Closed Time" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Technician" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Status" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="User" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Category" Binding="{Binding Type}" Width="100" />
-                            <DataGridTextColumn Header="Sub Category" Binding="{Binding Type}" Width="100" />
+                            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="250" />
+                            <DataGridTextColumn Header="Date Create" Binding="{Binding Dtm_Crt}" Width="100" />
+                            <DataGridTextColumn Header="Admin" Binding="{Binding L1}" Width="100" />
+                            <DataGridTextColumn Header="Due Date" Binding="{Binding DueDate}" Width="100" />
+                            <DataGridTextColumn Header="Last Update" Binding="{Binding Last_Update}" Width="100" />
+                            <DataGridTextColumn Header="Date On Progress" Binding="{Binding OnProgressDate}" Width="100" />
+                            <DataGridTextColumn Header="Date On Wait" Binding="{Binding OnWaitingDate}" Width="100" />
+                            <DataGridTextColumn Header="Date On Hold" Binding="{Binding OnHoldDate}" Width="100" />
+                            <DataGridTextColumn Header="Resolved Time" Binding="{Binding ResolvedTime}" Width="100" />
+                            <DataGridTextColumn Header="Closed Time" Binding="{Binding ClosedTime}" Width="100" />
+                            <DataGridTextColumn Header="Technician" Binding="{Binding Technician}" Width="100" />
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100" />
+                            <DataGridTextColumn Header="User" Binding="{Binding UserId}" Width="100" />
+                            <DataGridTextColumn Header="Category" Binding="{Binding CategoryId}" Width="100" />
+                            <DataGridTextColumn Header="Sub Category" Binding="{Binding SubCategoryId}" Width="100" />
                         </DataGrid.Columns>
 
                         <DataGrid.RowDetailsTemplate>

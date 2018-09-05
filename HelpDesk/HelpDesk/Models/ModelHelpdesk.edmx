@@ -26,14 +26,6 @@
           <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Interval" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Holiday">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Dates" Type="datetime" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="255" />
-        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,11 +55,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Dtm_Crt" Type="datetime" Nullable="false" />
-          <Property Name="L1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="L1" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DueDate" Type="datetime" Nullable="false" />
           <Property Name="Last_Update" Type="datetime" Nullable="false" />
           <Property Name="OnProgressDate" Type="datetime" />
@@ -75,7 +67,7 @@
           <Property Name="OnHoldDate" Type="datetime" />
           <Property Name="ResolvedTime" Type="datetime" />
           <Property Name="ClosedTime" Type="datetime" />
-          <Property Name="Technician" Type="varchar" MaxLength="30" />
+          <Property Name="Technician" Type="varchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UsersId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
@@ -189,7 +181,6 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DueDate" EntityType="Self.DueDate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -253,14 +244,6 @@
           <Property Name="Interval" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_DueDate" FromRole="DueDate" ToRole="Ticket" />
         </EntityType>
-        <EntityType Name="Holiday">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Dates" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -297,7 +280,7 @@
           <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Dtm_Crt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="L1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="L1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Last_Update" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OnProgressDate" Type="DateTime" Precision="3" />
@@ -305,7 +288,7 @@
           <Property Name="OnHoldDate" Type="DateTime" Precision="3" />
           <Property Name="ResolvedTime" Type="DateTime" Precision="3" />
           <Property Name="ClosedTime" Type="DateTime" Precision="3" />
-          <Property Name="Technician" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Technician" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UsersId" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
@@ -426,7 +409,6 @@
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="DueDates" EntityType="Self.DueDate" />
-          <EntitySet Name="Holidays" EntityType="Self.Holiday" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -488,15 +470,6 @@
               <MappingFragment StoreEntitySet="DueDate">
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Interval" ColumnName="Interval" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Holidays">
-            <EntityTypeMapping TypeName="helpdeskModel.Holiday">
-              <MappingFragment StoreEntitySet="Holiday">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Dates" ColumnName="Dates" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using HelpDesk.Views;
 using HelpDesk.Models;
 using System.Data.Entity.Validation;
+using System.Text.RegularExpressions;
 
 namespace HelpDesk.Views
 {
@@ -39,7 +40,13 @@ namespace HelpDesk.Views
             viewCategory(dgCategory);
             viewSubCategory(dgSubCategory);
             viewType(dgType);
+            viewTicket(dgTiket);
             LoadIdComboBox();
+        }
+
+        private void viewDepartment(object dgDepartment)
+        {
+            throw new NotImplementedException();
         }
 
         /*1. Nama entitas model saat membuat koneksi database (helpdeskEntitasNew)
@@ -281,6 +288,8 @@ namespace HelpDesk.Views
             tb_u_email.Clear();
         }
 
+       
+
 
         private void button_save_user(object sender, RoutedEventArgs e)
         {
@@ -310,16 +319,20 @@ namespace HelpDesk.Views
             {
                 Console.Write(ex.InnerException);
             }
+            cb_u_roleid.ItemsSource = _context.Roles.ToList();
+            cb_u_departmentid.ItemsSource = _context.Departments.ToList();
             MessageBox.Show("Data User Berhasil Ditambahkan!", "User", MessageBoxButton.OK, MessageBoxImage.Information);
             clearTextInputUser();
         }
 
 
-         private void viewUser (DataGrid DG)
+        private void viewUser(DataGrid DG)
         {
-            var user = from d in _context.Departments.ToList() join u in _context.Users.ToList()
-                       on d.Id equals u.Departmentid join r in _context.Roles.ToList()
-                       on u.Roleid equals r.Id
+            var user = from d in _context.Departments.ToList()
+                       join u in _context.Users.ToList()
+on d.Id equals u.Departmentid
+                       join r in _context.Roles.ToList()
+on u.Roleid equals r.Id
                        select u;
 
             DG.ItemsSource = user.ToList();
@@ -453,7 +466,7 @@ namespace HelpDesk.Views
             {
                 Console.Write(ex.InnerException);
             }
-            
+
             cb_sc_categoriid.ItemsSource = _context.Categories.ToList();
             MessageBox.Show("Data Category Berhasil Ditambahkan!", "Category", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -469,7 +482,7 @@ namespace HelpDesk.Views
             return cat;
 
         }
-        
+
 
         private void btn_c_edit_Click(object sender, RoutedEventArgs e)
         {
@@ -529,13 +542,15 @@ namespace HelpDesk.Views
         {
             tb_sc_id.Clear();
             tb_sc_subcategoryname.Clear();
-            
+
         }
 
         private void viewSubCategory(DataGrid DG)
         {
-            var sub = from c in _context.Categories.ToList() join sc in _context.SubCategories.ToList()
-                       on c.Id equals sc.CategoryId select sc;
+            var sub = from c in _context.Categories.ToList()
+                      join sc in _context.SubCategories.ToList()
+on c.Id equals sc.CategoryId
+                      select sc;
             DG.ItemsSource = sub.ToList();
         }
 
@@ -559,8 +574,8 @@ namespace HelpDesk.Views
             {
                 Console.Write(ex.InnerException);
             }
-            cb_tk_admin.ItemsSource = _context.Users.Where(admin => admin.Roleid == 11).ToList();
-            cb_tk_technician.ItemsSource = _context.Users.Where(admin => admin.Roleid == 12).ToList();
+            //cb_tk_admin.ItemsSource = _context.Users.Where(admin => admin.Roleid == 11).ToList();
+            //cb_tk_technician.ItemsSource = _context.Users.Where(admin => admin.Roleid == 12).ToList();
             cb_tk_user.ItemsSource = _context.Users.Where(admin => admin.Roleid == 13).ToList();
             MessageBox.Show("Data Sub Kategori Berhasil Dihapus !", "Sub Kategori", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -615,19 +630,16 @@ namespace HelpDesk.Views
 
         private void btn_sc_delete_Click(object sender, RoutedEventArgs e)
         {
-            object item = dgType.SelectedItem;
-            string temp_type = (dgType.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            object item = dgSubCategory.SelectedItem;
+            string temp_id = (dgSubCategory.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
 
-
-            string type = temp_type;
-
-            DueDate due = SearchIdType(type);
-            _context.Entry(due).State = System.Data.Entity.EntityState.Deleted;
+            int id = Convert.ToInt32(temp_id);
+            SubCategory subcat = SearchIdSubCategory(id);
+            _context.Entry(subcat).State = System.Data.Entity.EntityState.Deleted;
             _context.SaveChanges();
-            clearTextInputType();
-            this.viewType(dgType);
-
-            MessageBox.Show("Data Type Berhasil Dihapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            clearTextInputSubCategory();
+            this.viewSubCategory(dgSubCategory);
+            MessageBox.Show("Data Sub Category Berhasil Dihapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
 
@@ -645,7 +657,7 @@ namespace HelpDesk.Views
 
         private void viewType(DataGrid DG)
         {
-            
+
             DG.ItemsSource = _context.DueDates.ToList();
         }
 
@@ -689,12 +701,12 @@ namespace HelpDesk.Views
             }
         }
 
-        private DueDate SearchIdType(string type )
+        private DueDate SearchIdType(string type)
         {
             var type1 = _context.DueDates.Find(type);
             if (type1 == null)
             {
-                MessageBox.Show( type + "Tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(type + "Tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
             return type1;
@@ -719,7 +731,19 @@ namespace HelpDesk.Views
 
         private void btn_t_delete_Click(object sender, RoutedEventArgs e)
         {
+            object item = dgType.SelectedItem;
+            string temp_type = (dgType.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
 
+
+            string type = temp_type;
+
+            DueDate due = SearchIdType(type);
+            _context.Entry(due).State = System.Data.Entity.EntityState.Deleted;
+            _context.SaveChanges();
+            clearTextInputType();
+            this.viewType(dgType);
+
+            MessageBox.Show("Data Type Berhasil Dihapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /*============================================ T Y P E   E N D =====================================================*/
@@ -729,14 +753,28 @@ namespace HelpDesk.Views
         /*================================================ T I C K E T   S T A R T ===========================================*/
         private void clearTextInputTicket()
         {
-            
+            //tb_tk_type.Clear();
+            tb_tk_description.Clear();
+            //dp_datecreate.Clear();
+            //cb_tk_l1.Clear();
+            //tb_tk_teknisi.Clear();
+            //tb_tk_status.Clear();
+
 
         }
 
         private void viewTicket(DataGrid DG)
         {
-
-            DG.ItemsSource = _context.Tickets.ToList();
+            var gab = from dd in _context.DueDates.ToList()
+                      join tk in _context.Tickets.ToList()
+on dd.Type equals tk.Type
+                      join ct in _context.Categories.ToList()
+on tk.CategoryId equals ct.Id
+                      join sc in _context.SubCategories.ToList()
+on tk.SubCategoryId equals sc.Id
+                      select tk;
+            DG.ItemsSource = gab.ToList();
+            //DG.ItemsSource = _context.Tickets.ToList();
         }
 
 
@@ -748,7 +786,17 @@ namespace HelpDesk.Views
 
 
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
+        private void LetterValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
 
 
@@ -777,18 +825,31 @@ namespace HelpDesk.Views
             cb_sc_categoriid.SelectedValuePath = "Id";
             cb_sc_categoriid.ItemsSource = _context.Categories.ToList();
 
-            //Supaya tampil di combo box ticket, field admin
+            /*Supaya tampil di combo box ticket, field admin
             cb_tk_admin.DisplayMemberPath = "Username";
-            cb_tk_admin.SelectedValuePath = "Id";
+            cb_tk_admin.SelectedValuePath = "Username";
             cb_tk_admin.ItemsSource = _context.Users.Where(admin => admin.Roleid == 11).ToList();
 
             cb_tk_technician.DisplayMemberPath = "Username";
-            cb_tk_technician.SelectedValuePath = "Id";
-            cb_tk_technician.ItemsSource = _context.Users.Where(admin => admin.Roleid == 12).ToList();
+            cb_tk_technician.SelectedValuePath = "Username";
+            cb_tk_technician.ItemsSource = _context.Users.Where(admin => admin.Roleid == 12).ToList();*/
+
+            
+            cb_tk_l1.DisplayMemberPath = "Username";
+            cb_tk_l1.SelectedValuePath = "Username";
+            cb_tk_l1.ItemsSource = _context.Users.Where(admin => admin.Roleid == 14).ToList();
+
+            cb_tk_teknisi.DisplayMemberPath = "Username";
+            cb_tk_teknisi.SelectedValuePath = "Username";
+            cb_tk_teknisi.ItemsSource = _context.Users.Where(admin => admin.Roleid == 15).ToList();
+
+            cb_tk_type.DisplayMemberPath = "Type";
+            cb_tk_type.SelectedValuePath = "Type";
+            cb_tk_type.ItemsSource = _context.DueDates.ToList();
 
             cb_tk_user.DisplayMemberPath = "Username";
             cb_tk_user.SelectedValuePath = "Id";
-            cb_tk_user.ItemsSource = _context.Users.Where(admin => admin.Roleid == 13).ToList();
+            cb_tk_user.ItemsSource = _context.Users.Where(admin => admin.Roleid == 16).ToList();
 
             cb_tk_category.DisplayMemberPath = "Category_Name";
             cb_tk_category.SelectedValuePath = "Id";
@@ -799,19 +860,243 @@ namespace HelpDesk.Views
             cb_tk_subcategory.ItemsSource = _context.SubCategories.ToList();
         }
 
+
         private void btn_tk_save_Click(object sender, RoutedEventArgs e)
         {
+            /*
+            DateTime due;
 
+            if (cb_tk_type.Text == "High")
+            {
+                due = DateTime.Now.AddDays(5);
+            }
+            else if (cb_tk_type.Text == "Medium")
+            {
+                due = DateTime.Now.AddDays(10);
+            }
+            else if (cb_tk_type.Text == "Low")
+            {
+                due = DateTime.Now.AddDays(15);
+            } */
+
+            Ticket tk = new Ticket()
+            {
+
+                //Id = Convert.ToInt32(tb_u_id.Text),
+                Type = cb_tk_type.Text,
+                Description = tb_tk_description.Text,
+                Dtm_Crt = DateTime.Now,//Convert.ToDateTime(dp_datecreate.Text),
+                L1 = cb_tk_l1.Text, //int
+
+
+
+
+                DueDate = DateTime.Now.AddDays(15),//Convert.ToDateTime(dp_duedate.Text),
+                Last_Update = DateTime.Now,//Convert.ToDateTime(dp_lastupdate.Text),
+
+                OnProgressDate = null,//Convert.ToDateTime(dp_onprogress.Text),
+                OnWaitingDate = null, //Convert.ToDateTime(dp_onwait.Text),
+                OnHoldDate = null, //Convert.ToDateTime(dp_onhold.Text),
+                ResolvedTime = null, //Convert.ToDateTime(dp_resolved.Text),
+                ClosedTime = null, //Convert.ToDateTime(dp_closed.Text),
+
+                Technician = cb_tk_teknisi.Text, //int
+                Status = cb_tk_status.Text,
+                UsersId = Convert.ToInt32(cb_tk_user.SelectedValue),
+                CategoryId = Convert.ToInt32(cb_tk_category.SelectedValue),
+                SubCategoryId = Convert.ToInt32(cb_tk_subcategory.SelectedValue)
+
+
+            };
+
+            try
+            {
+                _context.Tickets.Add(tk);
+                _context.SaveChanges();
+
+                viewTicket(dgTiket);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                Console.Write(ex.StackTrace);
+                Console.Write(ex.InnerException);
+            }
+            cb_tk_type.ItemsSource = _context.DueDates.ToList();
+            cb_tk_user.ItemsSource = _context.Users.Where(admin => admin.Roleid == 16).ToList();
+            cb_tk_category.ItemsSource = _context.Categories.ToList();
+            cb_tk_subcategory.ItemsSource = _context.SubCategories.ToList();
+
+            MessageBox.Show("Data Tiket Berhasil Ditambahkan!", "Ticket", MessageBoxButton.OK, MessageBoxImage.Information);
+            clearTextInputTicket();
+        }
+
+        private Ticket SearchIdTicket(int id)
+        {
+            var ticket = _context.Tickets.Find(id);
+            if (ticket == null)
+            {
+                MessageBox.Show("ID Ticket" + id + "Tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            return ticket;
         }
 
         private void btn_tk_edit_Click(object sender, RoutedEventArgs e)
         {
+            object item = dgTiket.SelectedItem;
+            string temp_id = (dgTiket.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
 
+            int id = Convert.ToInt32(temp_id);
+
+            Ticket tk = SearchIdTicket(id);
+
+            if (tk.Type == "High")
+            {
+                //var variabel = _context.DueDates.Where(a => a.Type == "High").ToList();
+                tk.DueDate = DateTime.Now.AddDays(15);
+            }
+            else if (tk.Type == "Medium")
+            {
+                //var variabel = _context.DueDates.Where(a => a.Type == "Medium").ToList();
+                tk.DueDate = DateTime.Now.AddDays(10);
+            }
+            else if (tk.Type == "Low")
+            {
+                //var variabel = _context.DueDates.Where(a => a.Type == "Low").ToList();
+                tk.DueDate = DateTime.Now.AddDays(5);
+            }
+
+            tk.Type = cb_tk_type.Text;
+            tk.Description = tb_tk_description.Text;
+            tk.Dtm_Crt = Convert.ToDateTime(dp_datecreate.Text);
+            tk.L1 = cb_tk_l1.Text;
+            //tk.DueDate = Convert.ToDateTime(dp_duedate.Text);
+            tk.Last_Update = DateTime.Now;//Convert.ToDateTime(dp_lastupdate.Text);
+
+
+
+
+
+            tk.Technician = cb_tk_teknisi.Text;
+            tk.Status = cb_tk_status.Text;
+            if (tk.Status == "Laporan_Diterima")
+            {
+                tk.OnProgressDate = null;
+                tk.OnHoldDate = null;
+                tk.OnWaitingDate = null;
+                tk.ResolvedTime = null;
+                tk.ClosedTime = null;
+            }
+            else if (tk.Status == "OnProgress")
+            {
+                tk.OnProgressDate = DateTime.Now;// Convert.ToDateTime(dp_onprogress.Text);
+            }
+            else if (tk.Status == "OnWaitting")
+            {
+                tk.OnWaitingDate = DateTime.Now;//Convert.ToDateTime(dp_onwait.Text);
+            }
+            else if (tk.Status == "OnHolding")
+            {
+                tk.OnHoldDate = DateTime.Now;//Convert.ToDateTime(dp_onhold.Text);
+            }
+            else if (tk.Status == "Resolved")
+            {
+                tk.ResolvedTime = DateTime.Now;//Convert.ToDateTime(dp_resolved.Text);
+            }
+            else if (tk.Status == "Closed")
+            {
+                tk.ClosedTime = DateTime.Now; //Convert.ToDateTime(dp_closed.Text);
+            }
+
+            tk.UsersId = Convert.ToInt32(cb_tk_user.SelectedValue);
+            tk.CategoryId = Convert.ToInt32(cb_tk_category.SelectedValue);
+            tk.SubCategoryId = Convert.ToInt32(cb_tk_subcategory.SelectedValue);
+
+
+            _context.Entry(tk).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+            clearTextInputTicket();
+            this.viewTicket(dgTiket);
+            MessageBox.Show("Data Tiket Berhasil Diubah !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btn_tk_delete_Click(object sender, RoutedEventArgs e)
         {
+            object item = dgTiket.SelectedItem;
+            string temp_id = (dgTiket.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
 
+            int id = Convert.ToInt32(temp_id);
+            Ticket tk = SearchIdTicket(id);
+            _context.Entry(tk).State = System.Data.Entity.EntityState.Deleted;
+            _context.SaveChanges();
+            clearTextInputTicket();
+            this.viewTicket(dgTiket);
+            MessageBox.Show("Data Tiket Berhasil Dihapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void dgTiket_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = dgTiket.SelectedItem;
+
+                string type = (dgTiket.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_type.Text = type;
+
+                string description = (dgTiket.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                tb_tk_description.Text = description;
+
+                DateTime Dtm_Crt = Convert.ToDateTime((dgTiket.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text);
+                dp_datecreate.Text = Dtm_Crt.ToString();
+
+                string L1 = (dgTiket.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_l1.Text = L1;
+
+                DateTime DueDate = Convert.ToDateTime((dgTiket.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text);
+                dp_duedate.Text = DueDate.ToString();
+
+                DateTime Last_Update = Convert.ToDateTime((dgTiket.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text);
+                dp_lastupdate.Text = Last_Update.ToString();
+
+                DateTime OnProgress = Convert.ToDateTime((dgTiket.SelectedCells[7].Column.GetCellContent(item) as TextBlock).Text);
+                dp_onprogress.Text = OnProgress.ToString();
+
+                DateTime OnWaiting = Convert.ToDateTime((dgTiket.SelectedCells[8].Column.GetCellContent(item) as TextBlock).Text);
+                dp_onwait.Text = OnWaiting.ToString();
+
+                DateTime OnHold = Convert.ToDateTime((dgTiket.SelectedCells[9].Column.GetCellContent(item) as TextBlock).Text);
+                dp_onhold.Text = OnHold.ToString();
+
+                DateTime Resolved = Convert.ToDateTime((dgTiket.SelectedCells[10].Column.GetCellContent(item) as TextBlock).Text);
+                dp_resolved.Text = Resolved.ToString();
+
+                DateTime Closed = Convert.ToDateTime((dgTiket.SelectedCells[11].Column.GetCellContent(item) as TextBlock).Text);
+                dp_closed.Text = Closed.ToString();
+
+                string tech = (dgTiket.SelectedCells[12].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_teknisi.Text = tech;
+
+                string status = (dgTiket.SelectedCells[13].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_status.Text = status;
+
+                string userid = (dgTiket.SelectedCells[14].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_user.Text = userid;
+
+                string category = (dgTiket.SelectedCells[15].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_category.Text = category;
+
+                string subcat = (dgTiket.SelectedCells[16].Column.GetCellContent(item) as TextBlock).Text;
+                cb_tk_subcategory.Text = subcat;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+
     }
 }

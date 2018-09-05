@@ -26,7 +26,7 @@ namespace HelpDesk
 
         LoginVM l = new LoginVM();
         Dashboard vd = new Dashboard();
-        DashboardClient dc = new DashboardClient();
+        //DashboardClient dc = new DashboardClient();
 
         public MainWindow()
         {
@@ -37,9 +37,9 @@ namespace HelpDesk
         {
             if ((l.cekLogin(txtUsername.Text, txtPassword.Password)) == true)
             {
-                  MessageBox.Show("Login Success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                  this.Hide();
-                  vd.ShowDialog();
+                MessageBox.Show("Login Success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Hide();
+                vd.ShowDialog();
             }
             else
             {

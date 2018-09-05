@@ -28,7 +28,6 @@ namespace HelpDesk.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<DueDate> DueDates { get; set; }
-        public virtual DbSet<Holiday> Holidays { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

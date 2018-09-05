@@ -8,36 +8,36 @@
         Title="MainWindow" Height="622.722" Width="1059.926">
     <Border Background="#5F9EA0">
         <Grid>
-        <StackPanel 
+            <StackPanel 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
                 TextBlock.TextAlignment="Center">
-            <Border Background="White"
+                <Border Background="White"
             		CornerRadius="15"
             		Padding="15 50 15 40"
             		Width="400">
 
 
 
-                <StackPanel>
-                    <TextBlock Text="LOGIN HELPDESK PORTAL" FontSize="24" FontWeight="Bold" Foreground="#5F9EA0" Margin="0 40 0 10"/>
-                    <Label x:Name="labelUsername" Content="Username" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="White" BorderBrush="CadetBlue" />
-                    <Label x:Name="labelPassword" Content="Password" HorizontalAlignment="Center" Margin="155,0"/>
-                    <PasswordBox x:Name="txtPassword" HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="200" BorderBrush="CadetBlue"/>
+                    <StackPanel>
+                        <TextBlock Text="LOGIN HELPDESK PORTAL" FontSize="24" FontWeight="Bold" Foreground="#5F9EA0" Margin="0 40 0 10"/>
+                        <Label x:Name="labelUsername" Content="Username" HorizontalAlignment="Center"/>
+                        <TextBox x:Name="txtUsername" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="White" BorderBrush="CadetBlue" />
+                        <Label x:Name="labelPassword" Content="Password" HorizontalAlignment="Center" Margin="155,0"/>
+                        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="200" BorderBrush="CadetBlue"/>
 
-                    <Button x:Name="Login1" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="85" Click="Login1_Click" Margin="10" Background="CadetBlue" BorderBrush="{x:Null}" Foreground="White" Height="23"/>
+                        <Button x:Name="Login1" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="85" Click="Login1_Click" Margin="10" Background="CadetBlue" BorderBrush="{x:Null}" Foreground="White" Height="23"/>
 
-                </StackPanel>
-
-
-            </Border>
-        </StackPanel>
-            <Image x:Name="image" Source="E:\BOOTCAMP\App_HelpDesk\HelpDesk\HelpDesk\Images\support.png" HorizontalAlignment="Center" Width="127" Margin="464,78,461,396"/>
+                    </StackPanel>
 
 
+                </Border>
+            </StackPanel>
+            <Image x:Name="image" Source="D:\PT Metrodata\Dotnet\App_HelpDesk\HelpDesk\HelpDesk\Images\support.png" HorizontalAlignment="Center" Width="127" Margin="464,78,461,396"/>
 
-    </Grid>
+
+
+        </Grid>
     </Border>
 
 </Window>

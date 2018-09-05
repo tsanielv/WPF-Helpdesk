@@ -25,15 +25,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Holidays">
-      <EntityTypeMapping TypeName="helpdeskModel.Holiday">
-        <MappingFragment StoreEntitySet="Holiday">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Dates" ColumnName="Dates" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="helpdeskModel.Role">
         <MappingFragment StoreEntitySet="Role">

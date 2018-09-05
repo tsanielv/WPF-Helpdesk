@@ -21,14 +21,6 @@
     <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Interval" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Holiday">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Dates" Type="datetime" Nullable="false" />
-    <Property Name="Description" Type="varchar" MaxLength="255" />
-  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -58,11 +50,11 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Dtm_Crt" Type="datetime" Nullable="false" />
-    <Property Name="L1" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="L1" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DueDate" Type="datetime" Nullable="false" />
     <Property Name="Last_Update" Type="datetime" Nullable="false" />
     <Property Name="OnProgressDate" Type="datetime" />
@@ -70,7 +62,7 @@
     <Property Name="OnHoldDate" Type="datetime" />
     <Property Name="ResolvedTime" Type="datetime" />
     <Property Name="ClosedTime" Type="datetime" />
-    <Property Name="Technician" Type="varchar" MaxLength="30" />
+    <Property Name="Technician" Type="varchar" MaxLength="50" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UsersId" Type="int" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
@@ -184,7 +176,6 @@
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DueDate" EntityType="Self.DueDate" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />

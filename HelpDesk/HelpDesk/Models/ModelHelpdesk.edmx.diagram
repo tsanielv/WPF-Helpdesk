@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="helpdeskModel.Category" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="helpdeskModel.Department" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="helpdeskModel.DueDate" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="helpdeskModel.Holiday" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="helpdeskModel.Role" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="helpdeskModel.SubCategory" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="helpdeskModel.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
