@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HelpDesk.ViewModel;
+using HelpDesk.Views;
+
 
 namespace HelpDesk
 {
@@ -20,9 +23,31 @@ namespace HelpDesk
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        LoginVM l = new LoginVM();
+        Dashboard vd = new Dashboard();
+        DashboardClient dc = new DashboardClient();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Login1_Click(object sender, RoutedEventArgs e)
+        {
+            if ((l.cekLogin(txtUsername.Text, txtPassword.Password)) == true)
+            {
+                  MessageBox.Show("Login Success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                  this.Hide();
+                  vd.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Username and Password wrong", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtUsername.Clear();
+                txtPassword.Clear();
+                txtUsername.Focus();
+            }
         }
     }
 }
